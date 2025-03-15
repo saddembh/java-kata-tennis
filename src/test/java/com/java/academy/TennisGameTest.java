@@ -11,7 +11,7 @@ public class TennisGameTest {
     public void initialScoreShouldBeZeroForBothPlayers() {
         Player playerA = new Player("A");
         Player playerB = new Player("B");
-        TennisGame game = new TennisGame(playerA, playerB);
+        TennisGame game = new TennisGame(playerA, playerB, "");
         assertAll(
                 "Tennis Game Initial State",
                 () -> assertEquals(0, game.getPlayerA().getScore(), "Player A score should be 0"),
@@ -23,9 +23,10 @@ public class TennisGameTest {
     public void playerAWinsFirstPoint() {
         Player playerA = new Player("A");
         Player playerB = new Player("B");
-        TennisGame game = new TennisGame(playerA, playerB);
+        TennisGame game = new TennisGame(playerA, playerB, "A");
+        game.start();
         assertAll(
-                "Player A Wins First Point",
+                "Player A scores",
                 () -> assertEquals(1, game.getPlayerA().getScore(), "Player A score should be 1"),
                 () -> assertEquals(0, game.getPlayerB().getScore(), "Player B score should be 0")
         );
