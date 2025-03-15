@@ -14,8 +14,8 @@ public class TennisGameTest {
         TennisGame game = new TennisGame(playerA, playerB);
         assertAll(
                 "Tennis Game Initial State",
-                () -> assertEquals(0, playerA.getScore(), "Player A score should be 0"),
-                () -> assertEquals(0, playerA.getScore(), "Player B score should be 0")
+                () -> assertEquals(0, game.getPlayerA().getScore(), "Player A score should be 0"),
+                () -> assertEquals(0, game.getPlayerB().getScore(), "Player B score should be 0")
         );
     }
 }
