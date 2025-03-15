@@ -76,4 +76,28 @@ public class TennisGameTest {
                 () -> assertEquals(trackingScore, game.getTrackingScore(), "Tracking score should be " + trackingScore)
         );
     }
+
+    @Test
+    public void playerBWinsWithMoreThanOneDeuce() {
+        List<String> trackingScore = List.of(
+                "Player A : 15 / Player B : 0",
+                "Player A : 15 / Player B : 15",
+                "Player A : 30 / Player B : 15",
+                "Player A : 30 / Player B : 30",
+                "Player A : 40 / Player B : 30",
+                "Deuce",
+                "Advantage Player B",
+                "Deuce",
+                "Advantage Player B",
+                "Player B wins the game"
+        );
+        Player playerA = new Player("A");
+        Player playerB = new Player("B");
+        TennisGame game = new TennisGame(playerA, playerB, "ABABABBABB");
+        game.start();
+        assertAll(
+                "Player B wins the game",
+                () -> assertEquals(trackingScore, game.getTrackingScore(), "Tracking score should be " + trackingScore)
+        );
+    }
 }
