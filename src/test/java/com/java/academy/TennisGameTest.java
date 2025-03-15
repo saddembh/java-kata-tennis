@@ -18,4 +18,16 @@ public class TennisGameTest {
                 () -> assertEquals(0, game.getPlayerB().getScore(), "Player B score should be 0")
         );
     }
+
+    @Test
+    public void playerAWinsFirstPoint() {
+        Player playerA = new Player("A");
+        Player playerB = new Player("B");
+        TennisGame game = new TennisGame(playerA, playerB);
+        assertAll(
+                "Player A Wins First Point",
+                () -> assertEquals(1, game.getPlayerA().getScore(), "Player A score should be 1"),
+                () -> assertEquals(0, game.getPlayerB().getScore(), "Player B score should be 0")
+        );
+    }
 }
