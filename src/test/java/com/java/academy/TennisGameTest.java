@@ -35,4 +35,23 @@ public class TennisGameTest {
                 () -> assertEquals(trackingScore, game.getTrackingScore(), "Tracking score should be " + trackingScore)
         );
     }
+
+    @Test
+    public void playerAWinsTheGame() {
+        List<String> trackingScore = List.of(
+                "Player A : 15 / Player B : 0",
+                "Player A : 30 / Player B : 0",
+                "Player A : 40 / Player B : 0",
+                "Player A wins the game");
+        Player playerA = new Player("A");
+        Player playerB = new Player("B");
+        TennisGame game = new TennisGame(playerA, playerB, "AAAA");
+        game.start();
+        assertAll(
+                "Player A wins the game",
+                () -> assertEquals(4, game.getPlayerA().getScore(), "Player A score should be 4"),
+                () -> assertEquals(0, game.getPlayerB().getScore(), "Player B score should be 0"),
+                () -> assertEquals(trackingScore, game.getTrackingScore(), "Tracking score should be " + trackingScore)
+        );
+    }
 }
