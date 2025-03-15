@@ -34,9 +34,19 @@ public class TennisGame {
             } else if (pointForPlayer == 'B') {
                 playerB.incrementScore();
             }
-            trackingScore.add(formatScore(playerA.getScore(), playerB.getScore()));
+            if (isGameWon(playerA.getScore(), playerB.getScore())) {
+                trackingScore.add("Player " + (playerA.getScore() > playerB.getScore() ? "A" : "B") + " wins the game");
+            } else {
+                trackingScore.add(formatScore(playerA.getScore(), playerB.getScore()));
+            }
         }
     }
+
+    private static boolean isGameWon(int playerAScore, int playerBScore) {
+        return (playerAScore >= 4 && (playerAScore - playerBScore)  >= 2) ||
+                (playerBScore >= 4 && (playerBScore - playerAScore) >= 2);
+    }
+
 
     private static String formatScore(int playerAScore, int playerBScore) {
         return "Player A : " + convertScore(playerAScore) + " / Player B : " + convertScore(playerBScore);
