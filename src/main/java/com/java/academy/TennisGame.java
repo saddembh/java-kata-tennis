@@ -1,9 +1,13 @@
 package com.java.academy;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class TennisGame {
     private Player playerA;
     private Player playerB;
     private String scoringChain;
+    private List<String> trackingScore = new ArrayList<>();
 
     public TennisGame(Player playerA, Player playerB, String scoringChain) {
         this.playerA = playerA;
@@ -19,6 +23,10 @@ public class TennisGame {
         return playerB;
     }
 
+    public List<String> getTrackingScore() {
+        return trackingScore;
+    }
+
     public void start() {
         for (char pointForPlayer : scoringChain.toCharArray()) {
             if (pointForPlayer == 'A') {
@@ -26,6 +34,28 @@ public class TennisGame {
             } else if (pointForPlayer == 'B') {
                 playerB.incrementScore();
             }
+            trackingScore.add(formatScore(playerA.getScore(), playerB.getScore()));
         }
     }
+
+    private static String formatScore(int playerAScore, int playerBScore) {
+        return "Player A : " + convertScore(playerAScore) + " / Player B : " + convertScore(playerBScore);
+    }
+
+    private static String convertScore(int score) {
+        switch (score) {
+            case 0:
+                return "0";
+            case 1:
+                return "15";
+            case 2:
+                return "30";
+            case 3:
+                return "40";
+            default:
+                return "";
+        }
+    }
+
+
 }
