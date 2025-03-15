@@ -1,0 +1,21 @@
+package com.java.academy;
+
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+public class TennisGameTest {
+
+    @Test
+    public void initialScoreShouldBeZeroForBothPlayers() {
+        Player playerA = new Player("A");
+        Player playerB = new Player("B");
+        TennisGame game = new TennisGame(playerA, playerB);
+        assertAll(
+                "Tennis Game Initial State",
+                () -> assertEquals(0, playerA.getScore(), "Player A score should be 0"),
+                () -> assertEquals(0, playerA.getScore(), "Player B score should be 0")
+        );
+    }
+}
