@@ -49,7 +49,15 @@ public class TennisGame {
 
 
     private static String formatScore(int playerAScore, int playerBScore) {
-        return "Player A : " + convertScore(playerAScore) + " / Player B : " + convertScore(playerBScore);
+        if (playerAScore >= 3 && playerBScore >= 3) {
+            if (playerAScore == playerBScore) {
+                return "Deuce";
+            } else {
+                return "Advantage Player " + (playerAScore > playerBScore ? "A" : "B");
+            }
+        } else {
+            return "Player A : " + convertScore(playerAScore) + " / Player B : " + convertScore(playerBScore);
+        }
     }
 
     private static String convertScore(int score) {
